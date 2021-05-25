@@ -7,18 +7,15 @@
     #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
         #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
+PLACEHOLDER = "[name]"
 
-with open("./Input/Letters/starting_letter.txt", "r+") as starting_letter:
-    letter = starting_letter.read()
+with open("./Input/Names/invited_names.txt") as names:
+    names = names.readlines()
 
+with open("./Input/Letters/starting_letter.txt") as letter:
+    letter_contents = letter.read()
+    for name in names:
+        stripped_name = name.strip()
+        new_letter = letter_contents.replace(PLACEHOLDER, stripped_name)
 
-
-with open("./Input/Names/invited_names.txt", "r") as names:
-    # name_content = names.read()
-    name_list = names.readlines()
-    for name in name_list:
-        name.strip("\n")
-        letter.replace("[name]", name)
-        with open("./Output/ReadyToSend", "w") as new_letter:
-            
-
+        
